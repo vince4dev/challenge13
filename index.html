@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Javascript -->
+    <script src="./assets/js/script.js" defer></script>
+
+    <title>Frontend Mentor | Password generator app</title>
+  </head>
+
+  <body>
+    <main class="wrapper">
+      <article class="container">
+        <h1>Password Generator</h1>
+
+        <div pass__content>
+          <!-- DISPLAY PASSWORD -->
+          <div class="password">
+            <input type="text" placeholder="P4$5W0rD!" />
+          </div>
+
+          <div class="options">
+            <!-- CHOOSE LENGHT PASSWORD -->
+            <div class="option__lenght">
+              <label for="cursor"
+                >Character Length <span id="cursor-value">0</span></label
+              >
+              <input
+                type="range"
+                name="cursor"
+                id="cursor"
+                min="0"
+                max="100"
+                value="0"
+              />
+            </div>
+
+            <!-- CHOOSE CHARACTERS TYPES PASSWORD -->
+            <div class="option__char">
+              <fieldset class="fieldset-group">
+                <div class="choices">
+                  <!-- UPPERCASE -->
+                  <div class="choice">
+                    <input type="checkbox" name="upp" id="upp" value="upp" />
+                    <label for="upp">Include Uppercase Letters</label>
+                  </div>
+                  <!-- LOWERCASE -->
+                  <div class="choice">
+                    <input type="checkbox" name="low" id="low" value="low" />
+                    <label for="low">Include Lowercase Letters</label>
+                  </div>
+                  <!-- NUMBERS -->
+                  <div class="choice">
+                    <input type="checkbox" name="num" id="num" value="num" />
+                    <label for="num">Include Numbers</label>
+                  </div>
+                  <!-- SYMBOLS -->
+                  <div class="choice">
+                    <input type="checkbox" name="sym" id="sym" value="sym" />
+                    <label for="sym">Include Symbols</label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- STRENGHT -->
+            <div class="strenght">
+              <h2>STRENGHT</h2>
+              <div class="bars">
+                <!-- TOO WEAK -->
+                <div class="tw"></div>
+                <!-- WEAK -->
+                <div class="w"></div>
+                <!-- MEDIUM -->
+                <div class="m"></div>
+                <!-- STRONG -->
+                <div class="s"></div>
+              </div>
+            </div>
+
+            <!-- BUTTON GENERATE -->
+            <button class="btn">GENERATE</button>
+          </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

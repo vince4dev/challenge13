@@ -1,0 +1,115 @@
+/* *========================================
+      * FONTS *
+*======================================== */
+/* jetbrains-mono-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/jetbrains-mono-v24-latin-700.woff2") format("woff2");
+}
+
+/* *========================================
+      * VARIABLES *
+*======================================== */
+:root {
+  /* ---=== color ===--- */
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+
+  --clr-grey-950: hsl(255, 22%, 4%);
+  --clr-grey-900: hsl(248, 17%, 9%);
+  --clr-grey-850: hsl(248, 15%, 11%);
+  --clr-grey-800: hsl(247, 11%, 15%);
+  --clr-grey-700: hsl(248, 5%, 34%);
+  --clr-grey-600: hsl(251, 9%, 53%);
+  --clr-grey-200: hsl(252, 11%, 91%);
+
+  --clr-green-200: hsl(127, 100%, 82%);
+  --clr-yellow-300: hsl(42, 91%, 68%);
+  --clr-orange-400: hsl(13, 95%, 66%);
+  --clr-red-500: hsl(0, 91%, 63%);
+
+  --clr-grad-left: hsl(248, 17%, 9%);
+  --clr-grad-left: hsl(255, 22%, 4%);
+
+  /* ---=== fonts ===--- */
+  /* font family */
+  --ff-base: "JetBrains Mono", Arial, Helvetica, sans-serif;
+
+  /* font size */
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+
+  /* font weight */
+  --fw-bold: 700;
+
+  /* line height */
+  --lh-fs16: 1.25rem;
+  --lh-fs18: 1.5rem;
+  --lh-fs24: 2rem;
+  --lh-fs28: 2.625rem;
+}
+
+/* *========================================
+      * RESET *
+*======================================== */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  padding: 0;
+}
+
+button {
+  /* appearance: none; */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* *========================================
+      * BASE *
+*======================================== */
+body {
+  font-family: var(--ff-base);
+  font-size: var(--fs-18);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-fs18);
+  background-color: var(--clr-grey-950);
+  color: var(--clr-white);
+
+  display: grid;
+  min-height: 100%;
+  place-content: center;
+}
+
+h1 {
+  font-size: var(--fs-16);
+  color: var(--clr-grey-600);
+  line-height: var(--lh-fs16);
+}
+
+/* *========================================
+      * MAIN *
+*======================================== */
