@@ -21,7 +21,7 @@
   --clr-grey-950: hsl(255, 22%, 4%);
   --clr-grey-900: hsl(248, 17%, 9%);
   --clr-grey-850: hsl(248, 15%, 11%);
-  --clr-grey-800: hsl(247, 11%, 15%);
+  --clr-grey-800: hsl(248, 11%, 15%);
   --clr-grey-700: hsl(248, 5%, 34%);
   --clr-grey-600: hsl(251, 9%, 53%);
   --clr-grey-200: hsl(252, 11%, 91%);
@@ -52,6 +52,13 @@
   --lh-fs18: 1.5rem;
   --lh-fs24: 2rem;
   --lh-fs28: 2.625rem;
+
+  /* ---=== input ===--- */
+  /* type range */
+  --range-track-height: 8px;
+  --range-thumb-size: 28px;
+  --thumb-cursor: pointer;
+  --thumb-border-radius: 50%;
 }
 
 /* *========================================
@@ -88,28 +95,347 @@ button {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+input {
+  /* Retire les bordures et ombres par défaut */
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  /* Garde la typographie et le fond du site */
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+input:focus-visible {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
+
 /* *========================================
       * BASE *
 *======================================== */
 body {
   font-family: var(--ff-base);
-  font-size: var(--fs-18);
+  font-size: var(--fs-16);
   font-weight: var(--fw-bold);
-  line-height: var(--lh-fs18);
+  line-height: var(--lh-fs16);
   background-color: var(--clr-grey-950);
   color: var(--clr-white);
+  min-height: 100vh;
 
   display: grid;
-  min-height: 100%;
-  place-content: center;
+  place-items: center;
 }
 
-h1 {
-  font-size: var(--fs-16);
-  color: var(--clr-grey-600);
-  line-height: var(--lh-fs16);
+/* ---=== INPUT TYPE RANGE ===-------------------------- */
+/* * Init range */
+input[type="range"] {
+  width: 100%;
+  height: var(--range-track-height);
+  appearance: none;
+  background: transparent;
+}
+
+/* * Chrome / Safari ::-webkit ------------------------------------ */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: var(--range-track-height);
+  background: var(--clr-grey-850);
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--clr-green-200) 0%,
+    var(--clr-green-200) calc(var(--cursor-percentage)),
+    var(--clr-grey-850) 0%
+  );
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  background: var(--clr-grey-200);
+  border-radius: var(--thumb-border-radius);
+  cursor: var(--thumb-cursor);
+  margin-top: calc((var(--range-track-height) - var(--range-thumb-size)) / 2);
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--clr-green-200);
+}
+
+/* * Firefox :-moz --------------------------------------------- */
+input[type="range"]::-moz-range-track {
+  height: var(--range-track-height);
+  background: var(--clr-grey-850);
+}
+input[type="range"]::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    var(--clr-green-200) 0%,
+    var(--clr-green-200) calc(var(--cursor-percentage)),
+    var(--clr-grey-850) 0%
+  );
+}
+input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  width: var(--range-thumb-size);
+  height: var(--range-thumb-size);
+  background: var(--clr-grey-200);
+  border-radius: var(--thumb-border-radius);
+  cursor: var(--thumb-cursor);
+  margin-top: calc((var(--range-track-height) - var(--range-thumb-size)) / 2);
+}
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--clr-green-200);
+}
+
+/* ---=== INPUT TYPE CHECKBOX ===--- */
+.checkbox__choice input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.checkbox__choice label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 1rem;
+}
+.checkbox__choice .box {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--clr-grey-200);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.checkbox__choice .box::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 12px;
+  border: solid var(--clr-grey-850);
+  border-width: 0 3px 3px 0;
+  transform: translate(-50%, -70%) rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.checkbox__choice input[type="checkbox"]:checked + label .box {
+  background: var(--clr-green-200);
+  border-color: var(--clr-green-200);
+}
+.checkbox__choice input[type="checkbox"]:checked + label .box::after {
+  opacity: 1;
+}
+.checkbox__choice input[type="checkbox"]:focus + label .box {
+  /* outline: 2px solid #2196f3; */
 }
 
 /* *========================================
       * MAIN *
 *======================================== */
+/* ---=== TITLE ===--- */
+.title {
+  font-size: var(--fs-16);
+  color: var(--clr-grey-600);
+  line-height: var(--lh-fs16);
+  text-align: center;
+}
+
+/* ---=== CONTAINER ===--- */
+.container {
+  width: 21.4375rem;
+  display: grid;
+  gap: 1rem;
+}
+
+/* -- GENERATOR -- */
+.generator {
+  display: grid;
+  gap: 1rem;
+}
+
+/* -- DISPLAY PASSWORD -- */
+.password {
+  background-color: var(--clr-grey-800);
+
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.password input {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-fs24);
+}
+.password img {
+  width: 17.5px;
+  height: 20px;
+}
+
+/* -- OPTIONS -- */
+.options {
+  background-color: var(--clr-grey-800);
+  padding: 1rem;
+
+  display: grid;
+  gap: 2rem;
+}
+.option__cursor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.option__label-cursor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cursor__value {
+  color: var(--clr-green-200);
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-fs24);
+}
+
+/* CHOOSE CHARACTERS TYPES PASSWORD */
+.choices {
+  display: grid;
+  gap: 1rem;
+}
+
+/* -- STRENGHT -- */
+.strenght__content {
+  display: grid;
+  gap: 1rem;
+}
+.strenght {
+  padding: 1rem;
+  background-color: var(--clr-grey-850);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.strenght__title {
+  font-size: var(--fs-16);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-fs16);
+  color: var(--clr-grey-600);
+}
+.strenght__text {
+  font-size: var(--fs-18);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-fs18);
+  color: var(--clr-grey-200);
+}
+.strenght__level {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.bars {
+  display: flex;
+  gap: 0.5rem;
+}
+.bar {
+  width: 10px;
+  height: 28px;
+  border: 2px solid var(--clr-grey-200);
+}
+
+/* -- GENERATE BUTTON -- */
+.btn {
+  width: 100%;
+  background-color: var(--clr-green-200);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.btn span {
+  color: var(--clr-grey-800);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-fs16);
+}
+/* *========================================
+      * NEDIA *
+*======================================== */
+/* ---=== TABLET & DESKTOP ===--- */
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--fs-24);
+    line-height: var(--lh-fs24);
+  }
+
+  .container {
+    width: 33.75rem;
+    gap: 2rem;
+  }
+
+  /* DISPLAY PASSWORD */
+  .password input {
+    font-size: var(--fs-32);
+    line-height: var(--lh-fs42);
+  }
+  .password img {
+    width: 21px;
+    height: 24px;
+  }
+
+  /* -- GENERATOR -- */
+  .generator {
+    gap: 1.5rem;
+  }
+
+  /* OPTIONS */
+  .options {
+    padding: 1.5rem 2rem;
+  }
+  .option__cursor {
+    gap: 1rem;
+  }
+
+  /* CHECKBOX */
+  .checkbox__choice label {
+    gap: 1.5rem;
+  }
+  .checkbox__choice .text {
+    font-size: var(--fs-18);
+    line-height: var(--lh-fs18);
+  }
+
+  /* -- STRENGHT -- */
+  .strenght__content {
+    gap: 2rem;
+  }
+  .strenght__title {
+    font-size: var(--fs-18);
+    line-height: var(--lh-fs18);
+  }
+  .strenght__text {
+    font-size: var(--fs-24);
+    line-height: var(--lh-fs24);
+  }
+
+  /* -- GENERATE BUTTON -- */
+  .btn {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  .btn span {
+    font-size: var(--fs-18);
+    line-height: var(--lh-fs18);
+  }
+}
