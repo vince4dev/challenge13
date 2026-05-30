@@ -138,7 +138,6 @@ input[type="range"] {
   width: 100%;
   height: var(--range-track-height);
   appearance: none;
-  background: transparent;
 }
 
 /* * Chrome / Safari ------------------------------------ */
@@ -160,7 +159,11 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: var(--thumb-cursor);
   margin-top: calc((var(--range-track-height) - var(--range-thumb-size)) / 2);
 }
-input[type="range"]::-webkit-slider-thumb:hover {
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: var(--clr-grey-850);
+  border: 2px solid var(--clr-green-200);
+}
+input[type="range"]:focus-visible::-webkit-slider-thumb {
   background: var(--clr-grey-850);
   border: 2px solid var(--clr-green-200);
 }
@@ -175,6 +178,11 @@ input[type="range"]::-moz-range-track {
     var(--clr-grey-850) 0%
   );
 }
+input[type="range"]:focus-visible {
+  background: red;
+  outline: none;
+}
+
 input[type="range"]::-moz-range-thumb {
   appearance: none;
   width: var(--range-thumb-size);
@@ -184,12 +192,16 @@ input[type="range"]::-moz-range-thumb {
   cursor: var(--thumb-cursor);
   margin-top: calc((var(--range-track-height) - var(--range-thumb-size)) / 2);
 }
-input[type="range"]::-moz-range-thumb:hover {
+input[type="range"]:hover::-moz-range-thumb {
+  background: var(--clr-grey-850);
+  border: 2px solid var(--clr-green-200);
+}
+input[type="range"]:focus-visible::-moz-range-thumb {
   background: var(--clr-grey-850);
   border: 2px solid var(--clr-green-200);
 }
 
-/* ---=== INPUT TYPE CHECKBOX ===--- */
+/* ---=== INPUT TYPE CHECKBOX ===---------------------------- */
 .checkbox__choice input[type="checkbox"] {
   position: absolute;
   opacity: 0;
@@ -234,8 +246,21 @@ input[type="range"]::-moz-range-thumb:hover {
 .checkbox__choice input[type="checkbox"]:checked + label .box::after {
   opacity: 1;
 }
-.checkbox__choice input[type="checkbox"]:focus + label .box {
-  /* outline: 2px solid #2196f3; */
+.checkbox__choice input[type="checkbox"]:focus-visible + label .box {
+  border-color: var(--clr-green-200);
+}
+.checkbox__choice input[type="checkbox"]:focus-visible + label .box::after {
+  border-color: var(--clr-green-200);
+  opacity: 1;
+}
+.checkbox__choice input[type="checkbox"]:focus-visible:checked + label .box {
+  background: var(--clr-grey-850);
+}
+.checkbox__choice
+  input[type="checkbox"]:focus-visible:checked
+  + label
+  .box::after {
+  border-color: var(--clr-grey-200);
 }
 
 /* *========================================
@@ -279,14 +304,14 @@ input[type="range"]::-moz-range-thumb:hover {
   outline: none;
 }
 
-.icon-copy__content {
+.icon__copy-content {
   position: relative;
 
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.icon-copy {
+.icon__copy {
   color: var(--clr-green-200);
   width: 17.5px;
   height: 20px;
@@ -302,8 +327,15 @@ input[type="range"]::-moz-range-thumb:hover {
 .copied.active {
   display: block;
 }
-.icon-copy:hover {
+.icon__copy:hover {
   color: var(--clr-white);
+}
+#btn-copy:focus-visible .icon__copy {
+  color: var(--clr-white);
+}
+#btn-copy:focus-visible {
+  outline: 1px solid var(--clr-green-200);
+  outline-offset: 3px;
 }
 
 /* -- OPTIONS -- */
@@ -412,6 +444,16 @@ input[type="range"]::-moz-range-thumb:hover {
 .btn:active .icon-btn-generate {
   transform: translateX(10px);
 }
+.btn:-visible {
+  background-color: transparent;
+  outline: 2px solid var(--clr-green-200);
+}
+.btn:focus-vivible > span {
+  color: var(--clr-green-200);
+}
+.btn:focus-vivible .icon-btn-generate {
+  color: var(--clr-green-200);
+}
 
 /* *========================================
       * NEDIA *
@@ -443,17 +485,17 @@ input[type="range"]::-moz-range-thumb:hover {
     width: 21px;
     height: 24px;
   }
-  .icon-copy__content > span {
+  .icon__copy-content > span {
     color: var(--clr-green-200);
     font-size: var(--fs-18);
     line-height: var(--lh-fs18);
   }
-  .icon-copy {
+  .icon__copy {
     width: 21px;
     height: 24px;
   }
   .copied {
-    right: 26px;
+    right: 28px;
   }
 
   /* -- GENERATOR -- */
