@@ -444,14 +444,14 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 .btn:active .icon-btn-generate {
   transform: translateX(10px);
 }
-.btn:-visible {
+.btn:focus-visible {
   background-color: transparent;
   outline: 2px solid var(--clr-green-200);
 }
-.btn:focus-vivible > span {
+.btn:focus-visible > span {
   color: var(--clr-green-200);
 }
-.btn:focus-vivible .icon-btn-generate {
+.btn:focus-visible .icon-btn-generate {
   color: var(--clr-green-200);
 }
 
