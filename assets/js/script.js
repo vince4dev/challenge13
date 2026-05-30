@@ -134,6 +134,7 @@ function updateUI(score) {
   const { level, label, color } = getLevel(score);
   strengthText.textContent = label;
   strengthText.style.color = color;
+  strengthText.classList.add("active");
 
   bars.forEach((bar, i) => {
     bar.style.backgroundColor = i <= level ? color : "transparent";

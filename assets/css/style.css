@@ -128,8 +128,9 @@ body {
   color: var(--clr-white);
   min-height: 100vh;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  /* place-items: center; */
 }
 
 /* ---=== INPUT TYPE RANGE ===-------------------------- */
@@ -276,6 +277,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 
 /* ---=== CONTAINER ===--- */
 .container {
+  padding-top: 4rem;
   width: 21.4375rem;
   display: grid;
   gap: 1rem;
@@ -397,6 +399,12 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   line-height: var(--lh-fs18);
   color: var(--clr-grey-200);
 }
+#strength-text {
+  display: none;
+}
+#strength-text.active {
+  display: block;
+}
 .strength__level {
   display: flex;
   align-items: center;
@@ -466,6 +474,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   }
 
   .container {
+    padding-top: 8.3125rem;
     width: 33.75rem;
     gap: 2rem;
   }
